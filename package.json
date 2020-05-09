@@ -1,0 +1,25 @@
+{
+  "name": "signalk-speed-wind-averaging",
+  "version": "1.0.0",
+  "description": "SignalK plugin that provides calculates average boat speed and wind speed - all time and over a period.",
+  "main": "index.js",
+  "scripts": {
+    "format": "prettier-standard 'src/*.js'",
+    "build": "tsc",
+    "prepare": "tsc"
+  },
+  "author": "Peter Sedman <peter.sedman@boatly.com>",
+  "license": "ISC",
+  "keywords": [
+    "signalk-node-server-plugin"
+  ],
+  "dependencies": {
+    "baconjs": "^0.7.88"
+  },
+  "devDependencies": {
+    "@types/baconjs": "^0.7.33",
+    "@types/node": "^8.0.0",
+    "prettier-standard": "^8.0.1",
+    "typescript": "^3.0.3"
+  }
+}
