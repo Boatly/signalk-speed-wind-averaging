@@ -10,6 +10,8 @@ The plugin calculates the following values:
 - The wind speed averaged over the last 10 seconds
 - The maximum 10 second wind speed recorded
 
+All values are calculated as m/s.
+
 The following properties can be set in the plugin's configuration screen:
 
 - The period over which to average (10 seconds by default)
