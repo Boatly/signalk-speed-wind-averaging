@@ -1,6 +1,6 @@
 {
   "name": "signalk-speed-wind-averaging",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "SignalK plugin that provides calculates average boat speed and wind speed - all time and over a period.",
   "main": "index.js",
   "scripts": {

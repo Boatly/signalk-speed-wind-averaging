@@ -139,6 +139,8 @@ export default function (app: any) {
         reset()
         res.send('ok')                
       })
+
+      return router
     },
 
     started: false,
