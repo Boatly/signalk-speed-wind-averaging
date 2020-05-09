@@ -8,11 +8,19 @@
     "build": "tsc",
     "prepare": "tsc"
   },
+  "homepage": "https://github.com/boatly/signalk-speed-wind-averaging",
+  "bugs": "https://github.com/boatly/signalk-speed-wind-averaging/issues",
   "author": "Peter Sedman <peter.sedman@boatly.com>",
   "license": "ISC",
   "keywords": [
-    "signalk-node-server-plugin"
+    "signalk-node-server-plugin",
+    "signal k",
+    "signalk"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/boatly/signalk-speed-wind-averaging"
+  },
   "dependencies": {
     "baconjs": "^0.7.88"
   },
