@@ -20,4 +20,4 @@ The following properties can be set in the plugin's configuration screen:
 
 To reset the running averages for boat speed and wind speed you can call the following handler:
 
-`/self/reset`
+`/reset`

@@ -135,15 +135,10 @@ export default function (app: any) {
 
     signalKApiRoutes: function (router) {
 
-      // Closes off the current passage being recorded
-      const resetHandler = async function (req: any, res: any, next: any) {
+      router.post("/reset", (req: any, res: any) => {
         reset()
-        res.type('application/json')
-        res.json({ status: 'Completed' })
-      }
-
-      router.post('/self/reset', resetHandler)
-
+        res.send('ok')                
+      })
     },
 
     started: false,
@@ -216,15 +211,15 @@ export default function (app: any) {
   return plugin;
 
   function reset() {
-    let startTime = 0
-    let count = 0
-    let periodCount = 0
-    let avgSpeed = 0
-    let avgSpeedOverPeriod = 0
-    let maxAvgSpeedOverPeriod = 0
-    let avgWind = 0
-    let avgWindOverPeriod = 0
-    let maxAvgWindOverPeriod = 0
+    startTime = 0
+    count = 0
+    periodCount = 0
+    avgSpeed = 0
+    avgSpeedOverPeriod = 0
+    maxAvgSpeedOverPeriod = 0
+    avgWind = 0
+    avgWindOverPeriod = 0
+    maxAvgWindOverPeriod = 0
   }
 
   function formatData(speed: any, wind: any) {
