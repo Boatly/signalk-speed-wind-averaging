@@ -32,11 +32,25 @@ export default function (app: any) {
   let avgWindOverPeriod = 0
   let maxAvgWindOverPeriod = 0
 
+  let avgPeriodWindDeltaPath = ''
+  let maxAvgPeriodWindDeltaPath = ''
+  let avgPeriodSpeedDeltaPath = ''
+  let maxAvgPeriodSpeedDeltaPath = ''
+  let avgWindDeltaPath = ''
+  let avgSpeedDeltaPath = ''
+
   const plugin: IPlugin = {
 
     start: async function (props: any) {
 
       try {
+
+        avgPeriodWindDeltaPath = props.avgPeriodWindDeltaPath
+        maxAvgPeriodWindDeltaPath = props.maxAvgPeriodWindDeltaPath
+        avgPeriodSpeedDeltaPath = props.avgPeriodSpeedDeltaPath
+        maxAvgPeriodSpeedDeltaPath = props.maxAvgPeriodSpeedDeltaPath
+        avgWindDeltaPath = props.avgWindDeltaPath
+        avgSpeedDeltaPath = props.avgSpeedDeltaPath
 
         const speedStream = app.streambundle
           .getSelfStream(props.speedPath)
@@ -67,16 +81,7 @@ export default function (app: any) {
             updateAvgSpeed(value.speed)
             updateAvgWind(value.wind)
 
-            app.handleMessage('my-signalk-plugin', {
-              updates: [
-                {
-                  values: [
-                    { path: props.avgWindDeltaPath, value: avgWind },
-                    { path: props.avgSpeedDeltaPath, value: avgSpeed },
-                  ]
-                }
-              ]
-            })
+            updateSignalKAllTimePaths()
 
             const currentTime = new Date().getTime()
 
@@ -94,18 +99,7 @@ export default function (app: any) {
                 maxAvgWindOverPeriod = avgWindOverPeriod
               }
 
-              app.handleMessage('my-signalk-plugin', {
-                updates: [
-                  {
-                    values: [
-                      { path: props.avgPeriodWindDeltaPath, value: avgWindOverPeriod },
-                      { path: props.maxAvgPeriodWindDeltaPath, value: maxAvgWindOverPeriod },
-                      { path: props.avgPeriodSpeedDeltaPath, value: avgSpeedOverPeriod },
-                      { path: props.maxAvgPeriodSpeedDeltaPath, value: maxAvgSpeedOverPeriod },
-                    ]
-                  }
-                ]
-              })
+              updateSignalKAveragePaths()              
 
               // Reset counter & averages
               periodCount = 0
@@ -135,7 +129,7 @@ export default function (app: any) {
 
     signalKApiRoutes: function (router) {
 
-      router.post("/reset", (req: any, res: any) => {
+      router.post("/reset-signalk-speed-wind-averaging", (req: any, res: any) => {
         reset()
         res.send('ok')                
       })
@@ -222,6 +216,37 @@ export default function (app: any) {
     avgWind = 0
     avgWindOverPeriod = 0
     maxAvgWindOverPeriod = 0
+
+    updateSignalKAveragePaths()
+    updateSignalKAllTimePaths()
+  }
+
+  function updateSignalKAveragePaths() {
+    app.handleMessage('my-signalk-plugin', {
+      updates: [
+        {
+          values: [
+            { path: avgPeriodWindDeltaPath, value: avgWindOverPeriod },
+            { path: maxAvgPeriodWindDeltaPath, value: maxAvgWindOverPeriod },
+            { path: avgPeriodSpeedDeltaPath, value: avgSpeedOverPeriod },
+            { path: maxAvgPeriodSpeedDeltaPath, value: maxAvgSpeedOverPeriod },
+          ]
+        }
+      ]
+    })
+  }
+
+  function updateSignalKAllTimePaths() {
+    app.handleMessage('my-signalk-plugin', {
+      updates: [
+        {
+          values: [
+            { path: avgWindDeltaPath, value: avgWind },
+            { path: avgSpeedDeltaPath, value: avgSpeed },
+          ]
+        }
+      ]
+    })    
   }
 
   function formatData(speed: any, wind: any) {
