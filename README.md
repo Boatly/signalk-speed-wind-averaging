@@ -20,4 +20,4 @@ The following properties can be set in the plugin's configuration screen:
 
 To reset the running averages for boat speed and wind speed you can call the following handler:
 
-`/reset`
+`http://<signalk-server>/signalk/v1/api/reset-signalk-speed-wind-averaging`
