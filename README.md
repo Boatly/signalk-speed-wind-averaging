@@ -3,12 +3,17 @@ SignalK plugin to calculate average boat speed and wind speed over a defined per
 
 The plugin calculates the following values:
 
-- The running average boat speed
+- Maximum boat speed
+- Maximum boat speed over the last 10 seconds
+- Running average boat speed (all time average)
 - The boat speed averaged over the last 10 seconds
-- The maximum 10 second boat speed recorded
-- The running average wind speed
+- The maximum average 10 second boat
+
+- Maximum wind speed
+- Maximum wind speed over the last 10 seconds
+- Running average wind speed (all time average)
 - The wind speed averaged over the last 10 seconds
-- The maximum 10 second wind speed recorded
+- The maximum average 10 second wind speed
 
 All values are calculated as m/s.
 
