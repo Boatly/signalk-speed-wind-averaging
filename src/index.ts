@@ -55,7 +55,7 @@ export default function (app: any) {
       try {
         maxWindDeltaPath = props.windDeltas.maxWindDeltaPath
         maxWindOverPeriodDeltaPath = props.windDeltas.maxWindOverPeriodDeltaPath
-        avgWindDeltaPath = props.avgWindDeltaPath
+        avgWindDeltaPath = props.windDeltas.avgWindDeltaPath
         avgPeriodWindDeltaPath = props.windDeltas.avgPeriodWindDeltaPath
         maxAvgPeriodWindDeltaPath = props.windDeltas.maxAvgPeriodWindDeltaPath
 
